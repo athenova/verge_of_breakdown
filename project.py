@@ -1,4 +1,5 @@
 from simple_blogger import Journalist
+from simple_blogger.generators.OpenAIGenerator import OpenAITextGenerator
 from datetime import datetime
 
 class Project(Journalist):
@@ -6,9 +7,7 @@ class Project(Journalist):
         super().__init__(            
             review_chat_id=-1002374309134,
             first_post_date=datetime(2025, 3, 4),
-            text_ai_token_name='OPENAI_API_KEY',
-            ai_text_model='chatgpt-4o-latest',
-            text_base_url='https://api.openai.com/v1',
+            text_generator=OpenAITextGenerator(),
             **kwargs)
 
     def _task_converter(self, item):
